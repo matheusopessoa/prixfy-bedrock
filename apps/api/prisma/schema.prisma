@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  password      String
+  lastPasswords Json
+  name          String
+  createdAt     DateTime @default(now())
+  upvotes       Upvote[]
+  feedbacks     Feedback[]
+  comments Comment[]
+}
+
+enum Category {
+  BUG
+  FEATURE
+  ENHANCEMENT
+}
+
+enum Status {
+  SUGGESTION
+  PLANNED
+  IN_PROGRESS
+  LIVE
+}
+
+model Feedback {
+  id        String   @id @default(cuid())
+  createdBy String
+  user      User     @relation(fields: [createdBy], references: [id])
+  comments Comment[]
+  upvotes   Upvote[]
+  category  Category @default(FEATURE)
+  status    Status   @default(SUGGESTION)
+  title     String
+  text      String
+  images    String[] @default([])
+  isEdited  Boolean @default(false)
+  editedAt  DateTime?
+  createdAt DateTime @default(now())
+}
+
+model Upvote {
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  feedbackId String
+  feedback   Feedback @relation(fields: [feedbackId], references: [id])
+  @@unique([userId, feedbackId])
+}
+
+model Comment {
+  id        String    @id @default(cuid())
+  createdBy    String
+  user User @relation(fields: [createdBy], references: [id])
+  feedbackId String
+  feedback Feedback @relation(fields: [feedbackId], references: [id])
+  comment   String
+  isEdited  Boolean @default(false)
+  createdAt DateTime @default(now())
+  editedAt  DateTime?
+}
