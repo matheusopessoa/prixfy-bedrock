@@ -1,3 +1,4 @@
+# docker-compose.yml (Base)
 version: '3.8'
 
 services:
@@ -7,3 +8,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3333:3333"
+
+  web:
+    build: 
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
