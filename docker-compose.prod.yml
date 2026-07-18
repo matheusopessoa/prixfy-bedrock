@@ -13,4 +13,5 @@ services:
   api:
     environment:
       DATABASE_URL: "postgresql://${PROD_DB_USER}:${PROD_DB_PASS}@meu-rds-producao.aws.com:5432/feedback_prod_db"
+      EMAIL_BINDEX_SECRET: "${EMAIL_BINDEX_SECRET}"
     restart: always

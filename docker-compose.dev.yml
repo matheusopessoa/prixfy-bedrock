@@ -15,6 +15,7 @@ services:
   api:
     environment:
       DATABASE_URL: "${DATABASE_URL}"
+      EMAIL_BINDEX_SECRET: "${EMAIL_BINDEX_SECRET}"
     depends_on:
       - db
 
