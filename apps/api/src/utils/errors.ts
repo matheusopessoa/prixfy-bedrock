@@ -20,3 +20,13 @@ export class UnauthorizedError extends Error {
   }
 }
 
+export class InvalidEnvironmentError extends AppError {
+  constructor(issues: Record<string, string[] | undefined>) {
+    const details = Object.entries(issues)
+      .map(([variable, messages]) => `${variable} (${messages?.join(", ")})`)
+      .join("; ");
+
+    super(`Invalid environment variables: ${details}`, 500);
+  }
+}
+

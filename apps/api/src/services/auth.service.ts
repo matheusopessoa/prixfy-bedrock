@@ -77,5 +77,17 @@ export const authService = {
       { sub: user.id, type: "refresh" },
       { expiresIn: "7d" }
     )
+
+    const loginReply: LoginResponse = {
+    user: { id: user.id,
+            email: user.email,
+            name: user.name,
+            createdAt: user.createdAt
+          },
+    accessToken: accessToken,
+    refreshToken: refreshToken
+    }
+
+    return loginReply
   }
 };

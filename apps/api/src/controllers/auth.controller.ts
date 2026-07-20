@@ -1,17 +1,6 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
-import { z } from "zod";
+import { registerUserBodySchema, loginBodySchema } from "../utils/validators.js";
 import { authService } from "../services/auth.service.js";
-
-const registerUserBodySchema = z.object({
-    email: z.email(),
-    password: z.string().min(8),
-    name: z.string().min(1),
-});
-
-const loginBodySchema = z.object({
-    email: z.email(),
-    password: z.string().min(8)
-})
 
 export async function registerUser(request: FastifyRequest, reply: FastifyReply) {
     const data = registerUserBodySchema.parse(request.body);

@@ -1,7 +1,7 @@
 import { userRepository } from "../repositories/user.repository.js";
 import { emailBindex } from "../utils/bindex.js";
-import { UserAlreadyExistsError } from "../utils/errors.js";
-import { hash } from "../utils/hash.js";
+import { UserAlreadyExistsError, UnauthorizedError } from "../utils/errors.js";
+import { hash, compare } from "../utils/hash.js";
 export const authService = {
     async register({ email, password, name }) {
         const bindex = emailBindex(email);
@@ -24,5 +24,28 @@ export const authService = {
             createdAt: user.createdAt,
         };
     },
+    async login({ email, password }, app) {
+        const bindex = emailBindex(email);
+        const user = await userRepository.findByEmailBindex(bindex);
+        if (!user) {
+            throw new UnauthorizedError();
+        }
+        const passwordCompare = await compare(password, user.password);
+        if (!passwordCompare) {
+            throw new UnauthorizedError();
+        }
+        const accessToken = app.jwt.sign({ sub: user.id, email: user.email }, { expiresIn: "15m" });
+        const refreshToken = app.jwt.sign({ sub: user.id, type: "refresh" }, { expiresIn: "7d" });
+        const loginReply = {
+            user: { id: user.id,
+                email: user.email,
+                name: user.name,
+                createdAt: user.createdAt
+            },
+            accessToken: accessToken,
+            refreshToken: refreshToken
+        };
+        return loginReply;
+    }
 };
 //# sourceMappingURL=auth.service.js.map

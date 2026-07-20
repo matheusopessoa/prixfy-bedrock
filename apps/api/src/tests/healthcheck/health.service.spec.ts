@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { healthService } from "./health.service.js";
+import { healthService } from "../../services/health.service.js";
 
 describe("Health Service", () => {
   it("deve retornar status ok e um timestamp", () => {

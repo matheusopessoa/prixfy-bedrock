@@ -1,13 +1,13 @@
-import { z } from "zod";
+import { registerUserBodySchema, loginBodySchema } from "../utils/validators.js";
 import { authService } from "../services/auth.service.js";
-const registerUserBodySchema = z.object({
-    email: z.email(),
-    password: z.string().min(8),
-    name: z.string().min(1),
-});
 export async function registerUser(request, reply) {
     const data = registerUserBodySchema.parse(request.body);
     const user = await authService.register(data);
     return reply.status(201).send(user);
+}
+export async function loginUser(request, reply) {
+    const data = loginBodySchema.parse(request.body);
+    const loginData = await authService.login(data, request.server);
+    return reply.status(200).send(loginData);
 }
 //# sourceMappingURL=auth.controller.js.map

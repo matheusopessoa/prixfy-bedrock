@@ -1,1 +1,1 @@
-{"version":3,"file":"health.service.d.ts","sourceRoot":"","sources":["../../src/services/health.service.ts"],"names":[],"mappings":"AAAA,UAAU,YAAY;IACpB,MAAM,EAAE,MAAM,CAAC;IACf,SAAS,EAAE,IAAI,CAAC;CACjB;AAED,eAAO,MAAM,aAAa;IACxB,KAAK,IAAI,YAAY;CAMtB,CAAC"}
+{"version":3,"file":"health.service.d.ts","sourceRoot":"","sources":["../../src/services/health.service.ts"],"names":[],"mappings":"AAAA,UAAU,YAAY;IACpB,MAAM,EAAE,MAAM,CAAC;IACf,SAAS,EAAE,IAAI,CAAC;CACjB;AAED,eAAO,MAAM,aAAa;aACf,YAAY;CAMtB,CAAC"}

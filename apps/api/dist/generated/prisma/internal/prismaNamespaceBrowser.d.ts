@@ -26,29 +26,29 @@ export declare const JsonNull: import("@prisma/client/runtime/client").JsonNullC
  */
 export declare const AnyNull: import("@prisma/client/runtime/client").AnyNullClass;
 export declare const ModelName: {
-    readonly User: 'User';
+    readonly User: "User";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
-    readonly ReadUncommitted: 'ReadUncommitted';
-    readonly ReadCommitted: 'ReadCommitted';
-    readonly RepeatableRead: 'RepeatableRead';
-    readonly Serializable: 'Serializable';
+    readonly ReadUncommitted: "ReadUncommitted";
+    readonly ReadCommitted: "ReadCommitted";
+    readonly RepeatableRead: "RepeatableRead";
+    readonly Serializable: "Serializable";
 };
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
 export declare const UserScalarFieldEnum: {
-    readonly id: 'id';
-    readonly email: 'email';
-    readonly emailBindex: 'emailBindex';
-    readonly password: 'password';
-    readonly lastPasswords: 'lastPasswords';
-    readonly name: 'name';
-    readonly createdAt: 'createdAt';
+    readonly id: "id";
+    readonly email: "email";
+    readonly emailBindex: "emailBindex";
+    readonly password: "password";
+    readonly lastPasswords: "lastPasswords";
+    readonly name: "name";
+    readonly createdAt: "createdAt";
 };
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
 export declare const SortOrder: {
-    readonly asc: 'asc';
-    readonly desc: 'desc';
+    readonly asc: "asc";
+    readonly desc: "desc";
 };
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder];
 export declare const JsonNullValueInput: {
@@ -56,8 +56,8 @@ export declare const JsonNullValueInput: {
 };
 export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput];
 export declare const QueryMode: {
-    readonly default: 'default';
-    readonly insensitive: 'insensitive';
+    readonly default: "default";
+    readonly insensitive: "insensitive";
 };
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];
 export declare const JsonNullValueFilter: {

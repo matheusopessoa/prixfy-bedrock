@@ -1,0 +1,15 @@
+# Reinstalado dentro da imagem: copiar o da máquina quebraria os binários
+# nativos (a sua máquina é arm64/darwin, a imagem é linux).
+**/node_modules
+
+# Recompilado no estágio builder.
+**/dist
+
+# Segredos nunca entram na imagem: vêm do ambiente em tempo de execução.
+**/.env
+**/.env.*
+
+.git
+.gitignore
+**/.DS_Store
+.claude
