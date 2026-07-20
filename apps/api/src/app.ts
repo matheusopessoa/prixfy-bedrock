@@ -8,7 +8,7 @@ import { env } from "./config/env.js";
 import { corsOptions } from "./config/cors.js";
 
 export const app = fastify({
-  logger: true,
+  logger: env.NODE_ENV !== "test",
 });
 
 app.register(cors, corsOptions);

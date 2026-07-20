@@ -14,9 +14,9 @@ export class UserAlreadyExistsError extends AppError {
   }
 }
 
-export class UnauthorizedError extends Error {
+export class UnauthorizedError extends AppError {
   constructor() {
-    super(`Unauthorized for this action`)
+    super(`Unauthorized for this action`, 401)
   }
 }
 
